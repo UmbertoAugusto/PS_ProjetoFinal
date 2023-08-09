@@ -38,12 +38,12 @@ class testarMovimento():
         self.modulo_distancia = (msg.point.x**2+msg.point.y**2)**(1/2)
 
     def pegar_imagem(self):
-        #r = rospy.Rate(10)
+        r = rospy.Rate(10)
         while not rospy.is_shutdown():
             teste1.vel_nemo()
             teste1.distancia_relativa()
             rospy.Subscriber("camera/image_raw", Image, self.callback_img)
-            #r.sleep()
+            r.sleep()
 
     def callback_img(self,msg):
             try:

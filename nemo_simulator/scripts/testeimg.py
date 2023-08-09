@@ -37,16 +37,20 @@ def callback2(msg):
         lower = np.array([50, 100, 100])
         upper = np.array([70, 255, 255])
         mask = cv2.inRange(hsv_img, lower, upper)
-        cv2.imshow("img", img)
+        rospy.loginfo(type(mask))
+        rospy.loginfo(type(mask[0]))
+        rospy.loginfo(len(mask[0]))
+        rospy.loginfo(len(mask))
+
+        esquerda = mask[:,:427]
+        meio = mask[:,427:855]
+        direita = mask[:,855:]
+        cv2.imshow("img", esquerda)
         cv2.waitKey(0)
-        #mostra imagem
-        cv2.imshow("img", hsv_img)
+        cv2.imshow("img", meio)
         cv2.waitKey(0)
-        #mostra só o q eh da cor
-        cv2.imshow("hsv_img", mask)
+        cv2.imshow("img", direita)
         cv2.waitKey(0)
-        #rospy.loginfo(mask)
-        
 
 if __name__ == '__main__':
     abrirImagem()
